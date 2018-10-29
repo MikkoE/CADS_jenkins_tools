@@ -11,16 +11,17 @@ pipeline {
                 echo 'Hello World'
             }
         }
-    post {
-        success {
-            echo 'Pipe Stage successfull'
+        post {
+            success {
+                echo 'Pipe Stage successfull'
+            }
+            failure {
+                echo 'Pipe Stage failure'
+            }
+            always {
+                echo 'always here for you'
+            }
         }
-        failure {
-            echo 'Pipe Stage failure'
-        }
-        always {
-            echo 'always here for you'
-        }
+
     }
-}
 }
