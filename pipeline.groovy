@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Dependencies'){
             steps{
-                echo 'Hello World'
+                echo 'testing checkout scm'
             }
         }
     }
