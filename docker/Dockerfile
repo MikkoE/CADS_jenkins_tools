@@ -62,18 +62,41 @@ RUN tar -xf omnetpp-5.4.1-src-linux.tgz
 ################################################################################
 # Compilation requires path to be set
 ################################################################################
-ENV PATH $PATH:/usr/omnetpp/omnetpp-5.4/bin
+ENV PATH $PATH:/usr/omnetpp/omnetpp-5.4.1/bin
+
+################################################################################
+# Graphical interface disable
+################################################################################
+#RUN cd omnetpp-5.2 && sed -i 's/WITH_TKENV=yes/WITH_TKENV=no/g' configure.user
+#RUN cd omnetpp-5.2 && sed -i 's/WITH_QTENV=yes/WITH_QTENV=no/g' configure.user
+#RUN cd omnetpp-5.2 && sed -i 's/PREFER_QTENV=yes/PREFER_QTENV=no/g' configure.user
+#RUN cd omnetpp-5.2 && sed -i 's/WITH_OSG=yes/WITH_OSG=no/g' configure.user
+#RUN cd omnetpp-5.2 && sed -i 's/WITH_OSGEARTH=yes/WITH_OSGEARTH=no/g' configure.user
 
 ################################################################################
 # Configure and compile omnet++
 ################################################################################
-RUN cd omnetpp-5.4 && \
+RUN cd omnetpp-5.4.1 && \
 xvfb-run ./configure && \
 make
+
+################################################################################
+# INET Installation
+################################################################################
+# add credentials on build
+ARG SSH_PRIVATE_KEY
+RUN mkdir /root/.ssh/
+RUN echo "${SSH_PRIVATE_KEY}" > /root/.ssh/id_rsa
+
+# make sure your domain is accepted
+RUN touch /root/.ssh/known_hosts
+RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
+
+RUN git clone git@github.com:Transport-Protocol/inet-private.git
 
 ################################################################################
 # Cleanup
 ################################################################################
 RUN apt-get clean && \
 rm -rf /var/lib/apt && \
-rm /usr/omnetpp/omnetpp-5.4-src-linux.tgz
+rm /usr/omnetpp/omnetpp-5.4.1-src-linux.tgz
