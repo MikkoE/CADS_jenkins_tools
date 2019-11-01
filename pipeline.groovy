@@ -9,6 +9,9 @@ pipeline {
         stage('Git checkout'){
             steps{
                 echo 'testing checkout scm'
+                git branch: 'FEATURE/MIKKOE/Quic-test',
+                  credentialsId: '12345-1234-4696-af25-123455',
+                  url: 'https://github.com/Transport-Protocol/inet-private.git'
             }
         }
         stage('Preparation'){
