@@ -6,7 +6,26 @@ pipeline {
     }
 
     stages {
-        stage('Dependencies'){
+        stage('Git checkout'){
+            steps{
+                echo 'testing checkout scm'
+            }
+        },
+        stage('Preparation'){
+            steps{
+                echo 'testing checkout scm'
+            }
+        },stage('Run opp_test'){
+            steps{
+                echo 'testing checkout scm'
+            }
+        },
+        stage('Collect Data'){
+            steps{
+                echo 'testing checkout scm'
+            }
+        },
+        stage('Clean Up'){
             steps{
                 echo 'testing checkout scm'
             }
