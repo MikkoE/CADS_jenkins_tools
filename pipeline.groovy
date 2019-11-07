@@ -44,6 +44,7 @@ pipeline {
         }
         always {
             echo 'always here for you'
+            cleanWs()
         }
     }
 }
