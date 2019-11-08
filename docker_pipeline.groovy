@@ -7,6 +7,7 @@ node {
   }
 
   stage('Test') {
+    sh 'echo "Hello World!'
     sh 'node --version'
   }
 }
