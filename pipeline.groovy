@@ -29,8 +29,7 @@ pipeline {
 
                         sh 'ls'
                         sh 'echo $PATH'
-
-                        sh 'omnetpp --help'
+                        sh 'make'
                     }
                 }
             }
