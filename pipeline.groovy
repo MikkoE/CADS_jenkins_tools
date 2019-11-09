@@ -22,18 +22,17 @@ pipeline {
         stage('docker-omnetpp'){
             steps{
                 echo 'trying docker container'
-                script{
-                    def image = docker.image('niessan/omnetpp-inet')
-                    image.pull()
-                    image.inside().withRun('-u root') {
+                def image = docker.image('niessan/omnetpp-inet')
+                image.pull()
+                image.inside().withRun('-u root') {
 
-                        sh 'ls'
-                        sh 'echo $PATH'
-                        sh 'sudo -s <<EOF'
-                        sh 'whoami'
-                        sh 'EOF'
-                    }
+                    sh 'ls'
+                    sh 'echo $PATH'
+                    sh 'sudo -s <<EOF'
+                    sh 'whoami'
+                    sh 'EOF'
                 }
+
             }
         }
     }
