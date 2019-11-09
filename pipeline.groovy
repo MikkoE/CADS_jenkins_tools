@@ -29,7 +29,7 @@ pipeline {
 
                         sh 'cd .. && ls'
 
-                        sh 'omnetpp --hlp'
+                        sh 'omnetpp --help'
                     }
                 }
             }
