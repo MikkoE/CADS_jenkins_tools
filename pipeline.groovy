@@ -6,32 +6,6 @@ pipeline {
     }
 
     stages {
-        stage('docker-1'){
-            steps{
-                echo 'trying docker container'
-                script{
-                    def image = docker.image('node:alpine')
-                    image.pull()
-                    image.inside() {
-
-                        sh 'node --version'
-                    }
-                }
-            }
-        }
-        stage('docker'){
-            steps{
-                echo 'trying docker container'
-                script{
-                    def image = docker.image('niessan/omnetpp-inet')
-                    image.pull()
-                    image.inside() {
-
-                        sh 'cat /root/'
-                    }
-                }
-            }
-        }
         stage('Preparation'){
             steps{
                 sh 'ls'
@@ -45,19 +19,18 @@ pipeline {
                   url: 'https://github.com/Transport-Protocol/inet-private.git'
             }
         }
-        stage('Run opp_test'){
+        stage('docker-omnetpp'){
             steps{
-                echo 'testing checkout scm'
-            }
-        }
-        stage('Collect Data'){
-            steps{
-                echo 'testing checkout scm'
-            }
-        }
-        stage('Clean Up'){
-            steps{
-                echo 'testing checkout scm'
+                echo 'trying docker container'
+                script{
+                    def image = docker.image('niessan/omnetpp-inet')
+                    image.pull()
+                    image.inside() {
+
+                        sh 'cat /root/'
+                        sh 'omnetpp --hlp'
+                    }
+                }
             }
         }
     }
