@@ -17,6 +17,7 @@ pipeline {
         stage('Preparation'){
             steps{
                 echo 'installing omnetpp'
+                sh 'pwd'
                 sh 'scripts/omnetinstall.sh'
             }
         }
