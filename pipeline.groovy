@@ -10,9 +10,8 @@ pipeline {
         stage('Preparation'){
             steps{
                 echo 'installing omnetpp'
-                sh 'pwd'
-                sh 'ls'
-                sh 'scripts/omnetinstall.sh'
+                sh 'chown -R 1000 /mydir'
+                sh ./scripts/omnetinstall.sh
             }
         }
         stage('Git checkout'){
