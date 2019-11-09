@@ -14,7 +14,7 @@ pipeline {
                     image.pull()
                     image.inside() {
 
-                        sh 'locate omnet'
+                        sh 'ls'
                     }
                 }
             }
