@@ -1,14 +1,14 @@
 version: "3"
 services:
   jenkins:
-    image: jenkins/jenkins:lts
+    image: mikkoe/jenkins-docker:latest
     environment:
       - DOCKER_HOST=http://cads-docker.cpt.haw-hamburg.de:80
     ports:
       - '11001:8080'
       - '50000:50000'
     volumes:
-      - jenkins_data:/var/jenkins_home
+      - jenkins-data:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
 
 
