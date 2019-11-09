@@ -23,7 +23,7 @@ pipeline {
             steps{
                 echo 'trying docker container'
                 script{
-                    def image = docker.image('niessan/omnetpp-inet').inside() {
+                    def image = docker.image('niessan/omnetpp-inet').withRun('-u root').inside() {
 
                         sh 'ls'
                         sh 'echo $PATH'
