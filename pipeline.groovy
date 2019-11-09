@@ -6,6 +6,19 @@ pipeline {
     }
 
     stages {
+        stage('docker-1'){
+            steps{
+                echo 'trying docker container'
+                script{
+                    def image = docker.image('node:alpine')
+                    image.pull()
+                    image.inside() {
+
+                        sh 'node --version'
+                    }
+                }
+            }
+        }
         stage('docker'){
             steps{
                 echo 'trying docker container'
