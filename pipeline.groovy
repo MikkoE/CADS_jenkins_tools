@@ -17,6 +17,7 @@ pipeline {
                         }
                 }
         }
+        }
         stage('Preparation'){
             steps{
                 echo 'installing omnetpp'
@@ -71,6 +72,6 @@ pipeline {
             echo 'always here for you'
             cleanWs()
         }
+        }
     }
-}
 }
