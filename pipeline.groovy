@@ -16,7 +16,8 @@ pipeline {
         }
         stage('Preparation'){
             steps{
-                echo 'testing checkout scm'
+                echo 'installing omnetpp'
+                sh 'scripts/omnetinstall.sh'
             }
         }
         stage('Run opp_test'){
