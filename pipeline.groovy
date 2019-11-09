@@ -29,9 +29,9 @@ pipeline {
 
                         sh 'ls'
                         sh 'echo $PATH'
-                        sh 'su - '
+                        sh 'sudo -s <<EOF'
                         sh 'whoami'
-                        sh 'make'
+                        sh 'EOF'
                     }
                 }
             }
