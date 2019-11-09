@@ -21,9 +21,7 @@ pipeline {
         }
         stage('Preparation'){
             steps{
-                echo 'installing omnetpp'
                 sh 'ls'
-                sh 'chown -R 1000 scripts'
             }
         }
         stage('Git checkout'){
