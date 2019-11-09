@@ -28,6 +28,7 @@ pipeline {
                     image.inside() {
 
                         sh 'ls'
+                        sh 'echo $PATH'
 
                         sh 'omnetpp --help'
                     }
