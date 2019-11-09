@@ -10,7 +10,7 @@ pipeline {
             steps{
                 echo 'installing omnetpp'
                 sh 'ls'
-                sh 'chown -R 1000 /scripts'
+                sh 'chown -R 1000 scripts'
                 sh '/scripts/omnetinstall.sh'
             }
         }
