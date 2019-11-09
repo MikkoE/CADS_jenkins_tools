@@ -4,7 +4,7 @@ pipeline {
     options {
         timestamps()
     }
-    stages{}
+    stages{
         stage('test'){
             steps{
                 script{
