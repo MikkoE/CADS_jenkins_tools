@@ -10,10 +10,10 @@ pipeline {
             steps{
                 echo 'trying docker container'
                 script{
-                    def image = docker.image('node:alpine')
+                    def image = docker.image('niessan/omnetpp-inet')
                     image.pull()
                     image.inside() {
-                        sh 'node --version'
+                        sh 'omnet --help'
                     }
                 }
             }
