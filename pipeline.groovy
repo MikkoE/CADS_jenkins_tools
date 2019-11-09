@@ -4,6 +4,7 @@ pipeline {
     options {
         timestamps()
     }
+    stages{}
         stage('test'){
             steps{
                 script{
@@ -22,6 +23,18 @@ pipeline {
                 sh 'chown -R 1000 /mydir'
                 sh '/scripts/omnetinstall.sh'
             }
+        }
+        stage('test'){
+            steps{
+                script{
+                    def image = docker.image('mhart/alpine-node:8.11.3')
+                      image.pull()
+                        image.inside() {
+                          sh 'id'
+                          sh 'ls -lrt'
+                          sh 'node yarn install'
+                        }
+                }
         }
         stage('Git checkout'){
             steps{
@@ -59,4 +72,5 @@ pipeline {
             cleanWs()
         }
     }
+}
 }
