@@ -27,7 +27,7 @@ pipeline {
                     image.pull()
                     image.inside() {
 
-                        sh 'ls'
+                        sh 'cat /root/'
                     }
                 }
             }
