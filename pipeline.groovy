@@ -4,8 +4,6 @@ pipeline {
     options {
         timestamps()
     }
-
-    stages {
         stage('test'){
             steps{
                 script{
@@ -61,5 +59,4 @@ pipeline {
             cleanWs()
         }
     }
-}
 }
