@@ -23,7 +23,7 @@ pipeline {
             steps{
                 echo 'trying docker container'
                 script{
-                    def image = docker.image('niessan/omnetpp-inet')
+                    def image = docker.image('niessan/omnetpp-inet').withRun('-u root')
                     image.pull()
                     image.inside() {
 
