@@ -25,7 +25,7 @@ pipeline {
                 script{
                     def image = docker.image('niessan/omnetpp-inet')
                     image.pull()
-                    image.inside().withRun('-u root') {
+                    image.inside() {
 
                         sh 'ls'
                         sh 'echo $PATH'
