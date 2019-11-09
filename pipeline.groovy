@@ -27,7 +27,8 @@ pipeline {
                     image.pull()
                     image.inside() {
 
-                        sh 'cat /root/'
+                        sh 'cd .. && ls'
+
                         sh 'omnetpp --hlp'
                     }
                 }
