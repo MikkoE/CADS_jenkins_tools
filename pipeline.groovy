@@ -6,6 +6,18 @@ pipeline {
     }
 
     stages {
+        stage('docker'){
+            steps{
+                echo 'trying docker container'
+                script{
+                    def image = docker.image('node:alpine')
+                    image.pull()
+                    image.inside() {
+                        sh 'node --version'
+                    }
+                }
+            }
+        }
         stage('Preparation'){
             steps{
                 echo 'installing omnetpp'
