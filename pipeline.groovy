@@ -9,15 +9,16 @@ pipeline {
         stage('Git checkout'){
             steps{
                 echo 'testing checkout scm'
-                git branch: 'FEATURE/MIKKOE/Quic-test',
-                  credentialsId: 'fd377909-72a2-44f5-b89e-787344533514',
-                  url: 'https://github.com/Transport-Protocol/inet-private.git'
+                #git branch: 'FEATURE/MIKKOE/Quic-test',
+                #  credentialsId: 'fd377909-72a2-44f5-b89e-787344533514',
+                #  url: 'https://github.com/Transport-Protocol/inet-private.git'
             }
         }
         stage('Preparation'){
             steps{
                 echo 'installing omnetpp'
                 sh 'pwd'
+                sh 'ls'
                 sh 'scripts/omnetinstall.sh'
             }
         }
