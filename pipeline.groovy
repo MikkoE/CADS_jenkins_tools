@@ -13,7 +13,8 @@ pipeline {
                     def image = docker.image('niessan/omnetpp-inet')
                     image.pull()
                     image.inside() {
-                        sh 'omnet --help'
+
+                        sh 'locate omnet'
                     }
                 }
             }
