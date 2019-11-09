@@ -29,6 +29,7 @@ pipeline {
 
                         sh 'ls'
                         sh 'echo $PATH'
+                        sh 'whoami'
                         sh 'make'
                     }
                 }
