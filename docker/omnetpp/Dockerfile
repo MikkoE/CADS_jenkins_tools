@@ -16,5 +16,14 @@ ENV PATH=$PATH:/root/omnetpp/bin
 RUN ./configure WITH_TKENV=no WITH_QTENV=no WITH_OSG=no WITH_OSGEARTH=no WITH_PARSIM=no \
     && make -j$(grep -c proc /proc/cpuinfo)
 
+# Cppcheck
+WORKDIR /root
+RUN wget https://github.com/danmar/cppcheck/archive/1.89.tar.gz \
+    && tar -xzf 1.89.tar.gz && rm 1.89.tar.gz && mv cppcheck-1.89 cppcheck
+WORKDIR /root/cppcheck
+RUN cmake . && make -j$(grep -c proc /proc/cpuinfo) FILESDIR=/root/cppcheck HAVE_RULES=yes CXXFLAGS="-O2 -DNDEBUG -Wall -Wno-sign-compare -Wno-unused-function" \
+    && ln -s /root/cppcheck /usr/local/share/Cppcheck
+ENV PATH=$PATH:/root/cppcheck/bin
+
     # Set final workdir
     WORKDIR /root/models
