@@ -35,7 +35,8 @@ pipeline {
                         sh 'cat README.md'
                         sh 'cat INSTALL'
                         sh 'cat Makefile'
-                        sh 'make'
+                        sh 'make makefiles'
+                        sh 'make MODE=debug'
                     }
                 }
             }
