@@ -31,6 +31,7 @@ pipeline {
                         sh 'echo $PATH'
                         sh 'cat README.md'
                         sh 'cat INSTALL'
+                        sh 'which nedtool'
                     }
                 }
             }
