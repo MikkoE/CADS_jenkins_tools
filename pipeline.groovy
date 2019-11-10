@@ -9,6 +9,7 @@ pipeline {
         stage('Preparation'){
             steps{
                 sh 'ls'
+                sh 'whoami'
             }
         }
         stage('Git checkout'){
