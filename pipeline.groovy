@@ -30,6 +30,7 @@ pipeline {
 
                         sh 'ls'
                         sh 'echo $PATH'
+                        sh 'spawn su -'
                         sh 'whoami'
                     }
                 }
