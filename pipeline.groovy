@@ -35,7 +35,7 @@ pipeline {
                         sh 'cat README.md'
                         sh 'cat INSTALL'
                         sh 'cat Makefile'
-                        sh 'cat src/inet/'
+                        sh 'cat src/inet/features.h'
                         sh 'make makefiles'
                         sh 'make MODE=debug'
                     }
