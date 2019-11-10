@@ -1,0 +1,20 @@
+FROM ubuntu:18.04
+
+# Install packages
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get -qq -y install build-essential gcc g++ bison flex perl-base python python3 tcl-dev \
+    libxml2-dev libxml2-utils zlib1g-dev default-jre wget cmake python3
+
+# Omnet++
+WORKDIR /root
+RUN wget https://github.com/omnetpp/omnetpp/releases/download/omnetpp-5.4.1/omnetpp-5.4.1-src-linux.tgz \
+    && tar -xzf omnetpp-5.4.1-src-linux.tgz \
+    && rm omnetpp-5.4.1-src-linux.tgz \
+    && mv omnetpp-5.4.1 /root/omnetpp
+WORKDIR /root/omnetpp
+ENV PATH=$PATH:/root/omnetpp/bin
+RUN ./configure WITH_TKENV=no WITH_QTENV=no WITH_OSG=no WITH_OSGEARTH=no WITH_PARSIM=no \
+    && make -j$(grep -c proc /proc/cpuinfo)
+
+    # Set final workdir
+    WORKDIR /root/models
