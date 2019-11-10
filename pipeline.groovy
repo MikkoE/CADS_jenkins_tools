@@ -34,6 +34,7 @@ pipeline {
                         sh 'id -u jenkins'
                         sh 'cat README.md'
                         sh 'cat INSTALL'
+                        sh 'cat Makefile'
                         sh 'make'
                     }
                 }
