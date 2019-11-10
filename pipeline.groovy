@@ -31,6 +31,7 @@ pipeline {
                         sh 'ls'
                         sh 'echo $PATH'
                         sh 'whoami'
+                        sh 'id -u jenkins'
                         sh 'cat README.md'
                         sh 'cat INSTALL'
                     }
