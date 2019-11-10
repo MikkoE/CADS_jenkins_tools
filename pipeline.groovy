@@ -26,7 +26,6 @@ pipeline {
                 script{
                     def image = docker.image('mikkoe/omnetpp-inet-docker')
                     image.pull()
-                    image.withRun('-u root')
                     image.inside() {
 
                         sh 'ls'
@@ -35,6 +34,7 @@ pipeline {
                         sh 'id -u jenkins'
                         sh 'cat README.md'
                         sh 'cat INSTALL'
+                        sh 'make'
                     }
                 }
             }
