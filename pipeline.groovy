@@ -9,7 +9,7 @@ pipeline {
         stage('Preparation'){
             steps{
                 sh 'ls'
-                sh 'whoami'
+                sh 'id -u jenkins'
             }
         }
         stage('Git checkout'){
