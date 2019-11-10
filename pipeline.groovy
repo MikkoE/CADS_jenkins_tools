@@ -24,7 +24,7 @@ pipeline {
             steps{
                 echo 'trying docker container'
                 script{
-                    def image = docker.image('niessan/omnetpp-inet')
+                    def image = docker.image('mikkoe/omnetpp-inet-docker')
                     image.pull()
                     image.inside() {
 
