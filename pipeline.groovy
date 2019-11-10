@@ -30,6 +30,7 @@ pipeline {
                         sh 'ls'
                         sh 'echo $PATH'
                         sh 'cat README.md'
+                        sh 'cat INSTALL'
                     }
                 }
             }
