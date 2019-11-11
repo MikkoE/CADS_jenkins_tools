@@ -35,9 +35,9 @@ pipeline {
                         //sh 'cat README.md'
                         sh 'cat INSTALL'
                         //sh 'cat Makefile'
-                        sh 'ls src/'
-                        sh 'make makefiles'
-                        //sh 'make MODE=debug'
+                        //sh 'ls src/'
+                        //sh 'make makefiles'
+                        sh 'make MODE=debug'
                     }
                 }
             }
