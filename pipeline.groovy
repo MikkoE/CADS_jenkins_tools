@@ -31,7 +31,7 @@ pipeline {
 
                         sh 'ls -l'
                         sh 'ls -l /bin/sh'
-                        sh 'cd /home/ && ls'
+                        sh 'cd /home/jenkins'
 
                         //sh 'su cat /etc/sudoers'
                         //sh 'echo $PATH'
