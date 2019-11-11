@@ -32,7 +32,7 @@ pipeline {
                         //sh 'echo $PATH'
                         sh 'whoami'
                         sh 'id -u jenkins'
-                        sh 'chown -R jenkins ~jenkins'
+                        sh 'sudo -l'
                         //sh 'cat README.md'
                         //sh 'cat INSTALL'
                         //sh 'cat Makefile'
