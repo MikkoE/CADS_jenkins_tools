@@ -11,7 +11,7 @@ ARG OMNETPP_DIR=/home/jenkins/
 ################################################################################
 #  create jenkins user to be available in docker container                     #
 ################################################################################
-RUN useradd -m -s $(which bash) -G sudo jenkins
+RUN useradd -m -d /home/jenkins -s $(which bash) -G sudo jenkins
 #RUN useradd -u 1000 jenkins
 
 ################################################################################
@@ -28,6 +28,7 @@ RUN apt-get update && apt-get -qq -y install build-essential gcc g++ bison \
     default-jre wget cmake python3
 
 USER jenkins
+RUN ls -l /home
 ################################################################################
 #  installing omnetpp                                                          #
 ################################################################################
@@ -58,3 +59,5 @@ RUN make makefiles && make -j$(grep -c proc /proc/cpuinfo) && make MODE=debug -j
 ################################################################################
 COPY sudoers /etc/sudoers
 RUN cat /etc/sudoers
+
+RUN ls -l /home/jenkins
