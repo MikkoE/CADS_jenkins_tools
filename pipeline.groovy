@@ -29,7 +29,7 @@ pipeline {
                 script{
                     def image = docker.image('mikkoe/omnetpp-inet-docker')
                     image.pull()
-                    image.withRun('-u root'){
+                    image.inside{
 
                         // first information showing
                         sh 'ls -l'
