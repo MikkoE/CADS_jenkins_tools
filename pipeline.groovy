@@ -43,7 +43,7 @@ pipeline {
                             && rm omnetpp-5.4.1-src-linux.tgz \
                             && mv omnetpp-5.4.1 omnetpp'
                         sh 'PATH=$PATH:${pwd}/omnetpp/bin'
-                        sh 'cd omnetpp && ./configure WITH_TKENV=no WITH_QTENV=no WITH_OSG=no WITH_OSGEARTH=no WITH_PARSIM=no
+                        sh 'cd omnetpp && ./configure WITH_TKENV=no WITH_QTENV=no WITH_OSG=no WITH_OSGEARTH=no WITH_PARSIM=no'
                         sh 'export PATH=/var/jenkins_home/workspace/TestSuite/omnetpp/bin:$PATH'
                         sh 'cd omnetpp && make -j$(grep -c proc /proc/cpuinfo)'
 
