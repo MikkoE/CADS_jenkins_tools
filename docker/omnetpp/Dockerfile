@@ -6,7 +6,7 @@
 
 FROM ubuntu:18.04
 
-ENV OMNETPP_DIR=/home/jenkins/
+ARG OMNETPP_DIR=/home/jenkins/
 
 ################################################################################
 #  create jenkins user to be available in docker container                     #
@@ -27,17 +27,18 @@ RUN apt-get update && apt-get -qq -y install build-essential gcc g++ bison \
     flex perl-base python python3 tcl-dev libxml2-dev libxml2-utils zlib1g-dev \
     default-jre wget cmake python3
 
+USER jenkins
 ################################################################################
 #  installing omnetpp                                                          #
 ################################################################################
 # Omnet++
-WORKDIR $OMNETPP_DIR
+WORKDIR ${OMNETPP_DIR}
 RUN wget https://github.com/omnetpp/omnetpp/releases/download/omnetpp-5.4.1/omnetpp-5.4.1-src-linux.tgz \
     && tar -xzf omnetpp-5.4.1-src-linux.tgz \
     && rm omnetpp-5.4.1-src-linux.tgz \
-    && mv omnetpp-5.4.1 $OMNETPP_DIRomnetpp
-WORKDIR $OMNETPP_DIRomnetpp
-ENV PATH=$PATH:$OMNETPP_DIRomnetpp/bin
+    && mv omnetpp-5.4.1 ${OMNETPP_DIR}omnetpp
+WORKDIR ${OMNETPP_DIR}omnetpp
+ENV PATH=$PATH:${OMNETPP_DIR}omnetpp/bin
 RUN ./configure WITH_TKENV=no WITH_QTENV=no WITH_OSG=no WITH_OSGEARTH=no WITH_PARSIM=no \
     && make -j$(grep -c proc /proc/cpuinfo)
 
@@ -45,11 +46,11 @@ RUN ./configure WITH_TKENV=no WITH_QTENV=no WITH_OSG=no WITH_OSGEARTH=no WITH_PA
 ################################################################################
 #  installing inet                                                             #
 ################################################################################
-RUN mkdir -p $OMNETPP_DIRmodels
-WORKDIR $OMNETPP_DIRmodels
+RUN mkdir -p ${OMNETPP_DIR}models
+WORKDIR ${OMNETPP_DIR}models
 RUN wget https://github.com/inet-framework/inet/releases/download/v4.1.0/inet-4.1.0-src.tgz \
     && tar -xzf inet-4.1.0-src.tgz && rm inet-4.1.0-src.tgz && mv inet4 inet
-WORKDIR $OMNETPP_DIRmodels/inet
+WORKDIR ${OMNETPP_DIR}models/inet
 RUN make makefiles && make -j$(grep -c proc /proc/cpuinfo) && make MODE=debug -j$(grep -c proc /proc/cpuinfo)
 
 ################################################################################
