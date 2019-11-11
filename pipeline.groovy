@@ -41,8 +41,8 @@ pipeline {
                             && rm omnetpp-5.4.1-src-linux.tgz \
                             && mv omnetpp-5.4.1 omnetpp'
 
-                        sh 'echo PATH=$PATH:pwd/omnetpp/bin'
-                        sh 'PATH=$PATH:pwd/omnetpp/bin'
+                        sh 'echo PATH=$PATH:${pwd}/omnetpp/bin'
+                        sh 'PATH=$PATH:${pwd}/omnetpp/bin'
                         //sh 'su cat /etc/sudoers'
                         //sh 'echo $PATH'
                         //sh 'whoami'
