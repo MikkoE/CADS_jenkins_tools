@@ -31,7 +31,7 @@ pipeline {
 
                         sh 'ls -l'
                         sh 'ls -l /bin/sh'
-                        sh 'cd /home/ && pwd'
+                        sh 'cd /home/ && ls'
 
                         //sh 'su cat /etc/sudoers'
                         //sh 'echo $PATH'
