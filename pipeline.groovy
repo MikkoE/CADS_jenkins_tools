@@ -37,7 +37,7 @@ pipeline {
                         sh 'cat INSTALL'
                         //sh 'cat Makefile'
                         //sh 'ls src/'
-                        sh 'make makefiles'
+                        sh 'su make makefiles'
                         //sh 'make MODE=debug'
                     }
                 }
