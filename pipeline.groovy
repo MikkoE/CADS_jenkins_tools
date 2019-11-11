@@ -29,10 +29,17 @@ pipeline {
                     image.pull()
                     image.withRun('-u root'){
 
+                        // first information showing
                         sh 'ls -l'
-                        sh 'ls -l /bin/sh'
-                        sh 'cd /home/jenkins'
 
+
+                        // installing omnetpp
+                        sh 'wget https://github.com/omnetpp/omnetpp/releases/download/omnetpp-5.4.1/omnetpp-5.4.1-src-linux.tgz \
+                            && tar -xzf omnetpp-5.4.1-src-linux.tgz \
+                            && rm omnetpp-5.4.1-src-linux.tgz \
+                            && mv omnetpp-5.4.1 omnetpp'
+
+                        sh 'ls'
                         //sh 'su cat /etc/sudoers'
                         //sh 'echo $PATH'
                         //sh 'whoami'
