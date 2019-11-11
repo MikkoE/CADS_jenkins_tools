@@ -1,11 +1,23 @@
+################################################################################
+#   extending omnet-inet docker container with jenkins stuff                   #
+#                                                                              #
+#                                         Erstellt: 09.11.2019 Mikko Eberhatdt #
+################################################################################
+
 FROM niessan/omnetpp-inet
 
+################################################################################
+#  create jenkins user to be available in docker container                     #
+################################################################################
 RUN useradd -u 1000 jenkins
 
-#RUN cat /etc/group
-
+################################################################################
+#  adding jenkins to root group                                                #
+################################################################################
 RUN sed -i 's/root:x:0:/root:x:0:jenkins:/' /etc/group
 
-#RUN cat /etc/group
-
-RUN chown jenkins /bin/sh
+################################################################################
+#  want to call jenkins pipeline as root                                       #
+################################################################################
+COPY sudoers /etc/sudoers
+RUN cat /etc/sudoers
