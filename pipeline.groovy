@@ -33,7 +33,7 @@ pipeline {
 
                         // first information showing
                         sh 'ls -l'
-                        sh 'gcc'
+                        sh 'which gcc'
 
 
                         // installing omnetpp
