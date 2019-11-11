@@ -33,16 +33,17 @@ pipeline {
 
                         // first information showing
                         sh 'ls -l'
+                        sh 'gcc'
 
 
                         // installing omnetpp
-                        sh 'wget https://github.com/omnetpp/omnetpp/releases/download/omnetpp-5.4.1/omnetpp-5.4.1-src-linux.tgz \
-                            && tar -xzf omnetpp-5.4.1-src-linux.tgz \
-                            && rm omnetpp-5.4.1-src-linux.tgz \
-                            && mv omnetpp-5.4.1 omnetpp'
-                        sh 'PATH=$PATH:${pwd}/omnetpp/bin'
-                        sh 'cd omnetpp && ./configure WITH_TKENV=no WITH_QTENV=no WITH_OSG=no WITH_OSGEARTH=no WITH_PARSIM=no \
-                            && make -j$(grep -c proc /proc/cpuinfo)'
+                        // sh 'wget https://github.com/omnetpp/omnetpp/releases/download/omnetpp-5.4.1/omnetpp-5.4.1-src-linux.tgz \
+                        //     && tar -xzf omnetpp-5.4.1-src-linux.tgz \
+                        //     && rm omnetpp-5.4.1-src-linux.tgz \
+                        //     && mv omnetpp-5.4.1 omnetpp'
+                        // sh 'PATH=$PATH:${pwd}/omnetpp/bin'
+                        // sh 'cd omnetpp && ./configure WITH_TKENV=no WITH_QTENV=no WITH_OSG=no WITH_OSGEARTH=no WITH_PARSIM=no \
+                        //     && make -j$(grep -c proc /proc/cpuinfo)'
 
 
 
