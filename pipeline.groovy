@@ -31,15 +31,17 @@ pipeline {
 
                         sh 'ls -l'
                         sh 'ls -l /bin/sh'
-                        sh 'su cat /etc/sudoers'
+                        sh 'pwd'
+
+                        //sh 'su cat /etc/sudoers'
                         //sh 'echo $PATH'
                         //sh 'whoami'
                         //sh 'id -u jenkins'
                         //sh 'cat README.md'
-                        sh 'cat INSTALL'
+                        //sh 'cat INSTALL'
                         //sh 'cat Makefile'
                         //sh 'ls src/'
-                        sh 'make makefiles'
+                        //sh 'make makefiles'
                         //sh 'make MODE=debug'
                     }
                 }
