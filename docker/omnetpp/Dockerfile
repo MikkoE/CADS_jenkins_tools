@@ -8,4 +8,4 @@ RUN sed -i 's/root:x:0:/root:x:0:jenkins:/' /etc/group
 
 #RUN cat /etc/group
 
-RUN chmod +x /bin/sh
+RUN chown jenkins /bin/sh
