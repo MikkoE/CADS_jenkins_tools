@@ -29,7 +29,8 @@ pipeline {
                     image.pull()
                     image.inside{
 
-                        //sh 'ls'
+                        sh 'ls -l'
+                        sh 'ls -l /bin/sh'
                         //sh 'echo $PATH'
                         //sh 'whoami'
                         //sh 'id -u jenkins'
@@ -37,7 +38,7 @@ pipeline {
                         sh 'cat INSTALL'
                         //sh 'cat Makefile'
                         //sh 'ls src/'
-                        sh 'su make makefiles'
+                        sh 'make makefiles'
                         //sh 'make MODE=debug'
                     }
                 }
