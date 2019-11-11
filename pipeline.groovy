@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Preparation'){
             steps{
-                sh 'ls'
+                //sh 'ls'
                 sh 'id -u jenkins'
             }
         }
@@ -30,8 +30,8 @@ pipeline {
 
                         //sh 'ls'
                         //sh 'echo $PATH'
-                        sh 'whoami'
-                        sh 'id -u jenkins'
+                        //sh 'whoami'
+                        //sh 'id -u jenkins'
                         //sh 'cat README.md'
                         sh 'cat INSTALL'
                         //sh 'cat Makefile'
