@@ -28,36 +28,3 @@ RUN apt-get update && apt-get -qq -y install build-essential gcc g++ bison \
     default-jre wget cmake python3
 
 USER jenkins
-RUN ls -l /home
-################################################################################
-#  installing omnetpp                                                          #
-################################################################################
-# Omnet++
-WORKDIR ${OMNETPP_DIR}
-RUN wget https://github.com/omnetpp/omnetpp/releases/download/omnetpp-5.4.1/omnetpp-5.4.1-src-linux.tgz \
-    && tar -xzf omnetpp-5.4.1-src-linux.tgz \
-    && rm omnetpp-5.4.1-src-linux.tgz \
-    && mv omnetpp-5.4.1 ${OMNETPP_DIR}omnetpp
-WORKDIR ${OMNETPP_DIR}omnetpp
-ENV PATH=$PATH:${OMNETPP_DIR}omnetpp/bin
-RUN ./configure WITH_TKENV=no WITH_QTENV=no WITH_OSG=no WITH_OSGEARTH=no WITH_PARSIM=no \
-    && make -j$(grep -c proc /proc/cpuinfo)
-
-
-################################################################################
-#  installing inet                                                             #
-################################################################################
-RUN mkdir -p ${OMNETPP_DIR}models
-WORKDIR ${OMNETPP_DIR}models
-RUN wget https://github.com/inet-framework/inet/releases/download/v4.1.0/inet-4.1.0-src.tgz \
-    && tar -xzf inet-4.1.0-src.tgz && rm inet-4.1.0-src.tgz && mv inet4 inet
-WORKDIR ${OMNETPP_DIR}models/inet
-RUN make makefiles && make -j$(grep -c proc /proc/cpuinfo) && make MODE=debug -j$(grep -c proc /proc/cpuinfo)
-
-################################################################################
-#  want to call jenkins pipeline as root                                       #
-################################################################################
-COPY sudoers /etc/sudoers
-RUN cat /etc/sudoers
-
-RUN ls -l /home/jenkins
