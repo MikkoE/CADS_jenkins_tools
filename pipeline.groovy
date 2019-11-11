@@ -27,7 +27,7 @@ pipeline {
                 script{
                     def image = docker.image('mikkoe/omnetpp-inet-docker')
                     image.pull()
-                    image.inside{
+                    image.withRun('-u root'){
 
                         sh 'ls -l'
                         sh 'ls -l /bin/sh'
