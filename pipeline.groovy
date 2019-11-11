@@ -31,7 +31,7 @@ pipeline {
 
                         sh 'ls -l'
                         sh 'ls -l /bin/sh'
-                        sh 'cat /etc/sudoers'
+                        sh 'su cat /etc/sudoers'
                         //sh 'echo $PATH'
                         //sh 'whoami'
                         //sh 'id -u jenkins'
