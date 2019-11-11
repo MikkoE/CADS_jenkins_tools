@@ -45,7 +45,7 @@ pipeline {
                         sh 'PATH=$PATH:${pwd}/omnetpp/bin'
                         sh 'cd omnetpp && ./configure WITH_TKENV=no WITH_QTENV=no WITH_OSG=no WITH_OSGEARTH=no WITH_PARSIM=no'
                         sh 'export PATH=/var/jenkins_home/workspace/TestSuite/omnetpp/bin:$PATH'
-                        sh 'cat $PATH'
+                        sh 'echo $PATH'
                         sh 'cd omnetpp && make -j$(grep -c proc /proc/cpuinfo)'
 
 
