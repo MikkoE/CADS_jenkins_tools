@@ -51,7 +51,7 @@ pipeline {
 
                         // installing inet
                         sh 'cd inet-private && cat README.md'
-                        sh 'cd inet-private && at INSTALL'
+                        sh 'cd inet-private && cat INSTALL'
                         sh 'cd inet-private && cat Makefile'
                         sh 'cd inet-private && make makefiles'
                         //sh 'make MODE=debug'
