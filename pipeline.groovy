@@ -49,17 +49,11 @@ pipeline {
                         sh 'cd omnetpp && make -j$(grep -c proc /proc/cpuinfo)'
 
 
-
-
-                        //sh 'su cat /etc/sudoers'
-                        //sh 'echo $PATH'
-                        //sh 'whoami'
-                        //sh 'id -u jenkins'
-                        //sh 'cat README.md'
-                        //sh 'cat INSTALL'
-                        //sh 'cat Makefile'
-                        //sh 'ls src/'
-                        //sh 'make makefiles'
+                        // installing inet
+                        sh 'cd inet-private && cat README.md'
+                        sh 'cd inet-private && at INSTALL'
+                        sh 'cd inet-private && cat Makefile'
+                        sh 'cd inet-private && make makefiles'
                         //sh 'make MODE=debug'
                     }
                 }
