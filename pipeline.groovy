@@ -33,9 +33,6 @@ pipeline {
 
                         // first information showing
                         sh 'ls -l'
-                        sh 'which gcc'
-                        sh 'which g++'
-
 
                         // installing omnetpp
                         sh 'wget https://github.com/omnetpp/omnetpp/releases/download/omnetpp-5.4.1/omnetpp-5.4.1-src-linux.tgz \
@@ -44,17 +41,14 @@ pipeline {
                             && mv omnetpp-5.4.1 omnetpp'
                         sh 'PATH=$PATH:${pwd}/omnetpp/bin'
                         sh 'cd omnetpp && ./configure WITH_TKENV=no WITH_QTENV=no WITH_OSG=no WITH_OSGEARTH=no WITH_PARSIM=no'
-                        sh 'export PATH="/var/jenkins_home/workspace/TestSuite/omnetpp/bin:"$PATH'
-                        sh 'echo $PATH'
                         sh 'cd omnetpp && make -j$(grep -c proc /proc/cpuinfo)'
-
 
                         // installing inet
                         sh 'cd inet-private && cat README.md'
                         sh 'cd inet-private && cat INSTALL'
                         sh 'cd inet-private && cat Makefile'
                         sh 'cd inet-private && make makefiles'
-                        sh 'cd inet-private && make MODE=debug'
+                        //sh 'cd inet-private && make MODE=debug'
                     }
                 }
             }
