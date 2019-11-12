@@ -18,6 +18,7 @@ RUN useradd -m -d /home/jenkins -s $(which bash) -G sudo jenkins
 #  adding jenkins to root group                                                #
 ################################################################################
 RUN sed -i 's/root:x:0:/root:x:0:jenkins:/' /etc/group
+RUN cat /etc/group
 
 ################################################################################
 #  installing packages                                                         #
