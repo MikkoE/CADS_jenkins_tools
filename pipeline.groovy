@@ -51,7 +51,9 @@ pipeline {
                         sh 'cd inet-private && make MODE=debug'
 
                         //running the tests
+                        //first a inet testcandidate to validate running tests
                         sh 'cd inet-private/tests/unit/ && ./runtest intervaltree.test'
+                        sh 'cd inet-private/tests/packetdrill/quic/ && ./runtest'
                     }
                 }
             }
