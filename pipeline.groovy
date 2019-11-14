@@ -36,7 +36,7 @@ pipeline {
 
                         // installing omnetpp
                         sh 'wget https://gateway.ipfs.io/ipns/ipfs.omnetpp.org/release/5.2.1/omnetpp-5.2.1-src-linux.tgz \
-                            && tar -xzf omnetpp-5.5.1-src-linux.tgz \
+                            && tar -xzf omnetpp-5.2.1-src-linux.tgz \
                             && rm omnetpp-5.2.1-src-linux.tgz \
                             && mv omnetpp-5.2.1 omnetpp'
                         //sh 'PATH=$PATH:${pwd}/omnetpp/bin'
