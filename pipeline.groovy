@@ -51,7 +51,7 @@ pipeline {
                         sh 'cd inet-private && make MODE=debug'
 
                         //running the tests
-                        sh 'cd inet-private/tests/unit/ && ./runtest'
+                        sh 'cd inet-private/tests/unit/ && ./runtest QUICPathChallengeResponse'
                     }
                 }
             }
