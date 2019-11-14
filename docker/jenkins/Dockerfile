@@ -2,7 +2,7 @@
 #   Using jenkins image and extend with:                                       #
 #                                  docker                                      #
 #                                                                              #
-#                                         Erstellt: 09.11.2019 Mikko Eberhatdt #
+#                                         Erstellt: 09.11.2019 Mikko Eberhardt #
 ################################################################################
 
 FROM jenkins/jenkins:lts
@@ -27,11 +27,6 @@ apt-get update && \
 apt-get -y install docker-ce
 RUN apt-get install -y docker-ce
 RUN usermod -a -G docker jenkins
-
-################################################################################
-#  want to call jenkins pipeline as root                                       #
-################################################################################
-COPY sudoers /etc/sudoers
 
 ################################################################################
 #  changing back to original jenkins user                                      #

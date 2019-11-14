@@ -1,24 +1,15 @@
 ################################################################################
 #   extending omnet-inet docker container with jenkins stuff                   #
 #                                                                              #
-#                                         Erstellt: 09.11.2019 Mikko Eberhatdt #
+#                                         Erstellt: 09.11.2019 Mikko Eberhardt #
 ################################################################################
 
 FROM ubuntu:18.04
-
-ARG OMNETPP_DIR=/home/jenkins/
 
 ################################################################################
 #  create jenkins user to be available in docker container                     #
 ################################################################################
 RUN useradd -m -d /home/jenkins -s $(which bash) -G sudo jenkins
-#RUN useradd -u 1000 jenkins
-
-################################################################################
-#  adding jenkins to root group                                                #
-################################################################################
-RUN sed -i 's/root:x:0:/root:x:0:jenkins:/' /etc/group
-RUN cat /etc/group
 
 ################################################################################
 #  installing packages                                                         #
@@ -28,7 +19,12 @@ RUN apt-get update && apt-get -qq -y install build-essential gcc g++ bison \
     flex perl-base python python3 tcl-dev libxml2-dev libxml2-utils zlib1g-dev \
     default-jre wget cmake python3
 
+################################################################################
+#  adding omnet to the path variable                                           #
+################################################################################
 ENV PATH=/var/jenkins_home/workspace/TestSuite/omnetpp/bin:$PATH
-#RUN export PATH="/var/jenkins_home/workspace/TestSuite/omnetpp/bin:$PATH"
-RUN echo $PATH
+
+################################################################################
+#  switching back to normalen jenkins user                                     #
+################################################################################
 USER jenkins
