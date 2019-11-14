@@ -48,7 +48,7 @@ pipeline {
                         sh 'cd inet-private && cat INSTALL'
                         sh 'cd inet-private && cat Makefile'
                         sh 'cd inet-private && make makefiles'
-                        sh 'cd inet-private && make MODE=debug'
+                        //sh 'cd inet-private && make MODE=debug'
 
                         //running the tests
                         //first a inet testcandidate to validate running tests
