@@ -39,7 +39,7 @@ pipeline {
                             && tar -xzf omnetpp-5.5.1-src-linux.tgz \
                             && rm omnetpp-5.2.1-src-linux.tgz \
                             && mv omnetpp-5.2.1 omnetpp'
-                        sh 'PATH=$PATH:${pwd}/omnetpp/bin'
+                        //sh 'PATH=$PATH:${pwd}/omnetpp/bin'
                         sh 'cd omnetpp && ./configure WITH_TKENV=no WITH_QTENV=no WITH_OSG=no WITH_OSGEARTH=no WITH_PARSIM=no'
                         sh 'cd omnetpp && make -j$(grep -c proc /proc/cpuinfo)'
 
