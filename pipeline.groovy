@@ -49,6 +49,9 @@ pipeline {
                         sh 'cd inet-private && cat Makefile'
                         sh 'cd inet-private && make makefiles'
                         sh 'cd inet-private && make MODE=debug'
+
+                        //running the tests
+                        sh 'cd inet-private/tests/unit/ && ./runtest'
                     }
                 }
             }
