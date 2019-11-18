@@ -16,7 +16,7 @@ pipeline {
             steps{
                 dir('inet-private'){
                   echo 'checkout inet-private'
-                  git branch: 'FEATURE/JULIUSF/Quic-develop',
+                  git branch: 'FEATURE/MSVOELKER/Quic-develop/tests/unit',
                     credentialsId: 'fd377909-72a2-44f5-b89e-787344533514',
                     url: 'https://github.com/Transport-Protocol/inet-private.git'
                   sh 'git submodule update --init'
@@ -52,7 +52,7 @@ pipeline {
 
                         //running the tests
                         //first a inet testcandidate to validate running tests
-                        //sh 'cd inet-private/tests/unit/ && ./runtest intervaltree.test'
+                        //sh 'cd inet-private/tests/unit/ && ./runtest QUICPathChallengeResponse.test'
                         //sh 'cd inet-private/tests/packetdrill/quic/ && ./runtest'
                     }
                 }
