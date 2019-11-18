@@ -1,0 +1,49 @@
+%description:
+Test of QHKFD, HKDF-Extract, HKDF-Expand functions with test input data and expected data provided by QuicWG.
+https://github.com/quicwg/base-drafts/wiki/Test-Vector-for-the-Clear-Text-AEAD-key-derivation#draft-10-test-vectors
+
+%#--------------------------------------------------------------------------------------------------------------
+
+%includes:
+#include "inet/transportlayer/quic/QUICConnection.h"
+#include "inet/transportlayer/quic/QUICBasic.h"
+#include "inet/transportlayer/quic/crypto/QUICPacketProtector.h"
+
+%#--------------------------------------------------------------------------------------------------------------
+
+%global:
+using namespace inet;
+
+%#--------------------------------------------------------------------------------------------------------------
+
+%activity:
+uint64_t CONN_ID = 0x8394c8f03e515708;
+
+QUIC_Basic* quic = new QUIC_Basic();
+QUICConnection* connection = new QUICConnection(quic, CONN_ID, 0);
+connection->getPacketProtector()->setConnectionID(CONN_ID);
+connection->getPacketProtector()->initialize(connection);
+
+// Clear
+delete connection;
+delete quic;
+
+%#--------------------------------------------------------------------------------------------------------------
+
+%contains: stdout
+HS Secret:
+a572b0245af1eddf5c61c6e3f7f9304ca66bfb4caaf76567d5cb8dd1dc4e82b
+Client HS Secret:
+8355f21a3d8f83ecb3d0f9718d3f95ef65b4d8ae88a0611ee49db0b523591d
+Client HS Key:
+3ad0542c4a85847406349e3b3caab2
+Client HS IV:
+d1fd26542753aba38589bad
+Server HS Secret:
+f8e5771484b21cdebb5afe0a256a31741efe2b5c6b617bae1b2f15a83483d6
+Server HS Key:
+bee4c24d2af13380a9fa24a5e2ba2cff
+Server HS IV:
+25b58e246d9e7d5ffe4323fe
+
+%#--------------------------------------------------------------------------------------------------------------

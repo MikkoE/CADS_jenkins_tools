@@ -1,0 +1,105 @@
+%description:
+Test of TLS handshake messages.
+Note: Comment out package in simpleQuicSetup.net!
+
+%#--------------------------------------------------------------------------------------------------------------
+
+%inifile: omnetpp.ini
+
+[General]
+network=QuickTest
+cmdenv-event-banners=false
+cmdenv-express-mode = false
+tkenv-plugin-path = ../../../etc/plugins
+ned-path = ../../../../examples/quic/basic;../../../../src
+
+## Setup connection line
+simtime-resolution                                      = ms
+sim-time-limit                                          = ${simTimeEnd = 0.4}s
+**.*.ppp[*].ppp.mtu                                     = 1500B
+
+## Setup Queues at router
+**.*.ppp[*].queueType                                   = "DropTailQueue"   #REDQueue
+**.*router*.**.frameCapacity                            = 84
+
+## Debug setup 
+**.*.*.vector-recording                                 = true
+testNetwork.**.vector-recording-intervals               = 0..360
+
+#**.numPcapRecorders                                    = 1   # *** Enable pcap dump here! ***
+#**.pcapRecorder[0].pcapFile                            = ${N1=fullPath()}+".pcap"
+
+## configuration setup
+*.configurator.dumpAddresses                            = true
+*.configurator.dumpTopology                             = true
+*.configurator.dumpRoutes                               = true
+*.configurator.dumpLinks                                = true
+
+## Experiment setup
+**.*host*.numNetPerfMeterApps                           = 1
+**.*host*.netPerfMeterApp[*].protocol                   = "QUIC"
+**.*host*.netPerfMeterApp[*].frameRate                  = 300Hz # = 150 Hz
+**.*host*.netPerfMeterApp[*].streamPriorityString       = "0;1;2"
+
+
+**.*host*.netPerfMeterApp[*].startTime                  = 0.1s
+**.host1.netPerfMeterApp[*].stopTime                    = 0.001s # relative to "resetTime"
+**.host1.netPerfMeterApp[*].resetTime                   = 0.2s   # relative to "connectTime", sets stopTimer
+
+**.host1.netPerfMeterApp[*].activeMode                  = true
+**.host2.netPerfMeterApp[*].activeMode                  = false
+**.host2.netPerfMeterApp[*].connectTime                 = 0.01s
+
+
+**.host1.netPerfMeterApp[*].localPort                   = 8000
+**.host1.netPerfMeterApp[*].remoteAddress               = "host2"
+**.host1.netPerfMeterApp[*].remotePort                  = 8001
+
+**.host2.netPerfMeterApp[*].localPort                   = 8001
+**.host2.netPerfMeterApp[*].remoteAddress               = "host1"
+**.host2.netPerfMeterApp[*].remotePort                  = 8000
+
+**.*.netPerfMeterApp[*].outboundStreams                 = 3
+**.*.netPerfMeterApp[*].maxInboundStreams               = 3
+
+**.*.netPerfMeterApp[*].maxMsgSize                      = 1223B
+**.*.netPerfMeterApp[*].frameSize                       = 1223B
+**.*.netPerfMeterApp[*].queueSize                       = 5e+05B
+
+%#--------------------------------------------------------------------------------------------------------------
+
+%# ================ TLS handshake messages test ================
+%contains-regex: stdout
+ClientHello: 0x160301.{4}01
+
+%contains-regex: stdout
+ServerHello: 0x160303.{4}02
+
+%contains-regex: stdout
+ClientFinished: 0x170303
+
+%# ================ 1-RTT key test ================
+%contains: stdout
+Handshake finished and generated PP keys (process_SEND)
+
+%contains: stdout
+Handshake finished and generated PP keys (processTLSStreamFrame)
+
+%# ================ Stream 0 test ================
+%not-contains: stdout
+Scheduled Stream 0 for sending
+
+%# ================ Transport parameter test ================
+%contains: stdout
+Added transport parameter for Client
+
+%contains: stdout
+Added transport parameter for Client
+
+%contains: stdout
+Parsed transport parameter for Server
+
+%contains: stdout
+Parsed transport parameter for Server
+
+%#--------------------------------------------------------------------------------------------------------------
