@@ -58,7 +58,7 @@ pipeline {
                         //trying to copy denis test for quic
                         sh 'cp quic-tests/QuicTLS.test inet-private/tests/unit/'
                         sh 'cd inet-private/tests/unit/ && ls -l'
-                        //sh 'cd inet-private/tests/packetdrill/quic/ && ./runtest'
+                        sh 'cd inet-private/tests/unit/ && ./runtest QuicTLS.test'
                     }
                 }
             }
