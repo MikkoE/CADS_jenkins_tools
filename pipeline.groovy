@@ -7,7 +7,7 @@ pipeline {
 
     stages {
         stage('Preparation'){
-            steps{s
+            steps{
                 //sh 'ls'
                 sh 'id -u jenkins'
             }
