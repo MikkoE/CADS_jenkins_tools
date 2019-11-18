@@ -7,7 +7,7 @@ pipeline {
 
     stages {
         stage('Preparation'){
-            steps{
+            steps{s
                 //sh 'ls'
                 sh 'id -u jenkins'
             }
@@ -16,7 +16,7 @@ pipeline {
             steps{
                 dir('inet-private'){
                   echo 'checkout inet-private'
-                  git branch: 'FEATURE/DENISLUG/Quic-WP5-HPJ',
+                  git branch: 'FEATURE/DENISLUG/Quic-WP5',
                     credentialsId: 'fd377909-72a2-44f5-b89e-787344533514',
                     url: 'https://github.com/Transport-Protocol/inet-private.git'
                   sh 'git submodule update --init'
