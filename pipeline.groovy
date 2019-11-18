@@ -16,7 +16,7 @@ pipeline {
             steps{
                 dir('inet-private'){
                   echo 'checkout inet-private'
-                  git branch: 'FEATURE/ESV/QUIC-WP9',
+                  git branch: 'FEATURE/DENISLUG/Quic-develop',
                     credentialsId: 'fd377909-72a2-44f5-b89e-787344533514',
                     url: 'https://github.com/Transport-Protocol/inet-private.git'
                   sh 'git submodule update --init'
@@ -35,10 +35,10 @@ pipeline {
                         sh 'ls -l'
 
                         // installing omnetpp
-                        sh 'wget https://github.com/omnetpp/omnetpp/releases/download/omnetpp-5.5.1/omnetpp-5.5.1-src-linux.tgz \
-                            && tar -xzf omnetpp-5.5.1-src-linux.tgz \
-                            && rm omnetpp-5.5.1-src-linux.tgz \
-                            && mv omnetpp-5.5.1 omnetpp'
+                        sh 'wget https://github.com/omnetpp/omnetpp/releases/download/omnetpp-5.4.1/omnetpp-5.4.1-src-linux.tgz \
+                            && tar -xzf omnetpp-5.4.1-src-linux.tgz \
+                            && rm omnetpp-5.4.1-src-linux.tgz \
+                            && mv omnetpp-5.4.1 omnetpp'
                         //sh 'PATH=$PATH:${pwd}/omnetpp/bin'
                         sh 'cd omnetpp && ./configure WITH_TKENV=no WITH_QTENV=no WITH_OSG=no WITH_OSGEARTH=no WITH_PARSIM=no'
                         sh 'cd omnetpp && make -j$(grep -c proc /proc/cpuinfo)'
