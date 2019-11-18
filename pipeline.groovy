@@ -16,7 +16,7 @@ pipeline {
             steps{
                 dir('inet-private'){
                   echo 'checkout inet-private'
-                  git branch: 'FEATURE/JULIUSF/NADA-NG',
+                  git branch: 'FEATURE/BENEKENT/Quic-WP4',
                     credentialsId: 'fd377909-72a2-44f5-b89e-787344533514',
                     url: 'https://github.com/Transport-Protocol/inet-private.git'
                   sh 'git submodule update --init'
