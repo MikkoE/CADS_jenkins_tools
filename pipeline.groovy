@@ -52,7 +52,7 @@ pipeline {
 
                         //running the tests
                         //first a inet testcandidate to validate running tests
-                        //sh 'cd inet-private/tests/unit/ && ./runtest QUICPathChallengeResponse.test'
+                        sh 'cd inet-private/tests/unit/ && ./runtest QUICPathChallengeResponse.test'
                         //sh 'cd inet-private/tests/packetdrill/quic/ && ./runtest'
                     }
                 }
