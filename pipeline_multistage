@@ -1,5 +1,13 @@
+// Initialize a LinkedHashMap / object to share between stages
+def pipelineContext = [:]
+
 pipeline {
     agent any
+
+    environment {
+        DOCKER_IMAGE_TAG = "mikkoe/omnetpp-inet-docker"
+    }
+
 
     options {
         timestamps()
@@ -23,12 +31,28 @@ pipeline {
                 }
             }
         }
+        stage('pull docker image'){
+          steps{
+            echo "looking for a ne image"
+            script{
+              def image = docker.image('mikkoe/omnetpp-inet-docker')
+              image.pull()
+              pipelineContext.image = image
+            }
+          }
+        }
+        stage('Run') {
+            steps {
+                echo "Run docker image"
+                script {
+                    pipelineContext.container = pipelineContext.image.run()
+                }
+            }
+        }
         stage('docker-omnetpp'){
             steps{
                 echo 'trying docker container'
                 script{
-                    def image = docker.image('mikkoe/omnetpp-inet-docker')
-                    image.pull()
                     image.inside{
 
                         // first information showing
