@@ -37,13 +37,7 @@ network QuickTest
             per = 0;
             ber = 0;
         }
-        channel ppplineBottleneck extends DatarateChannel
-        {
-            delay = 1ms;
-            datarate = 10Mbps;
-            per = 0;
-            ber = 0;
-        }
+
     submodules:
         router1: Router {
             @display("p=273,199");
@@ -70,6 +64,6 @@ network QuickTest
         }
     connections:
         host1.pppg[0] <--> pppline <--> router1.pppg[0];
-        router1.pppg[1] <--> ppplineBottleneck <--> router2.pppg[0];
+        router1.pppg[1] <--> pppline <--> router2.pppg[0];
         router2.pppg[1] <--> pppline <--> host2.pppg[0];
 }
