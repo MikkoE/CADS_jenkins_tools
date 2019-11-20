@@ -55,10 +55,14 @@ pipeline {
                         //sh 'cd inet-private/tests/unit/ && ./runtest QUICPathChallengeResponse.test'
                         //sh 'cd inet-private/tests/packetdrill/quic/ && ./runtest'
 
-                        //trying to copy denis test for quic
+                        //override the ned file
+                        sh 'cd inet-private/examples/quic/basic && rm simpleQuicSetup.net'
+                        sh 'cp quic-tests/simpleQuicSetup.net inet-private/examples/quic/basic/'
+
+                        //trying to copy test for quic
                         sh 'cp quic-tests/QuicTLS.test inet-private/tests/unit/'
                         sh 'cd inet-private/tests/unit/ && ls -l'
-                        //sh 'cd inet-private/tests/unit/ && ./runtest QuicTLS.test'
+                        sh 'cd inet-private/tests/unit/ && ./runtest QuicHandhsake.test'
                     }
                 }
             }
