@@ -56,7 +56,7 @@ pipeline {
                         //sh 'cd inet-private/tests/packetdrill/quic/ && ./runtest'
 
                         //override the ned file
-                        sh 'cd inet-private/examples/quic/basic && rm simpleQuicSetup.net'
+                        sh 'cd inet-private/examples/quic/basic && rm simpleQuicSetup.ned'
                         sh 'cp quic-tests/simpleQuicSetup.ned inet-private/examples/quic/basic/'
 
                         //trying to copy test for quic
