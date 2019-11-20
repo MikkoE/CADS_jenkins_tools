@@ -1,5 +1,7 @@
 pipeline {
     agent any
+    def image = docker.image('mikkoe/omnetpp-inet-docker')
+    image.pull()
 
     options {
         timestamps()
@@ -27,8 +29,6 @@ pipeline {
             steps{
                 echo 'trying docker container'
                 script{
-                    def image = docker.image('mikkoe/omnetpp-inet-docker')
-                    image.pull()
                     image.inside{
 
                         // first information showing
@@ -58,7 +58,7 @@ pipeline {
                         //trying to copy denis test for quic
                         sh 'cp quic-tests/QuicTLS.test inet-private/tests/unit/'
                         sh 'cd inet-private/tests/unit/ && ls -l'
-                        sh 'cd inet-private/tests/unit/ && ./runtest QuicTLS.test'
+                        //sh 'cd inet-private/tests/unit/ && ./runtest QuicTLS.test'
                     }
                 }
             }
