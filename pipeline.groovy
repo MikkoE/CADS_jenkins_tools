@@ -57,12 +57,12 @@ pipeline {
 
                         //override the ned file
                         sh 'cd inet-private/examples/quic/basic && ls '//rm simpleQuicSetup.net'
-                        sh 'cp quic-tests/simpleQuicSetup.net inet-private/examples/quic/basic/'
+                        sh 'cp quic-tests/simpleQuicSetup.ned inet-private/examples/quic/basic/'
 
                         //trying to copy test for quic
                         sh 'cp quic-tests/QuicTLS.test inet-private/tests/unit/'
                         sh 'cd inet-private/tests/unit/ && ls -l'
-                        sh 'cd inet-private/tests/unit/ && ./runtest QuicHandhsake.test'
+                        sh 'cd inet-private/tests/unit/ && ./runtest QuicHandshake.test'
                     }
                 }
             }
