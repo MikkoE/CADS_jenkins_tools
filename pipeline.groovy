@@ -67,6 +67,11 @@ pipeline {
                 }
             }
         }
+        stage('testresults'){
+            steps{
+                sh 'ls'
+            }
+        }
     }
     post {
         success {
@@ -74,6 +79,7 @@ pipeline {
         }
         failure {
             echo 'Pipe Stage failure'
+            sh 'ls'
         }
         always {
             echo 'always here for you'
