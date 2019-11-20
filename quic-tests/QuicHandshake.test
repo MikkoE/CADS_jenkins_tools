@@ -72,10 +72,4 @@ testNetwork.**.vector-recording-intervals               = 0..360
 %contains-regex: stdout
 ClientHello: 0x160301.{4}01
 
-%contains-regex: stdout
-ServerHello: 0x160303.{4}02
-
-%contains-regex: stdout
-ClientFinished: 0x170303
-
 %#--------------------------------------------------------------------------------------------------------------
