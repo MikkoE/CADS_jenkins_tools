@@ -78,22 +78,4 @@ ServerHello: 0x160303.{4}02
 %contains-regex: stdout
 ClientFinished: 0x170303
 
-
-%# ================ Stream 0 test ================
-%not-contains: stdout
-Scheduled Stream 0 for sending
-
-%# ================ Transport parameter test ================
-%contains: stdout
-Added transport parameter for Client
-
-%contains: stdout
-Added transport parameter for Client
-
-%contains: stdout
-Parsed transport parameter for Server
-
-%contains: stdout
-Parsed transport parameter for Server
-
 %#--------------------------------------------------------------------------------------------------------------
