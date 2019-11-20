@@ -78,12 +78,6 @@ ServerHello: 0x160303.{4}02
 %contains-regex: stdout
 ClientFinished: 0x170303
 
-%# ================ 1-RTT key test ================
-%contains: stdout
-Handshake finished and generated PP keys (process_SEND)
-
-%contains: stdout
-Handshake finished and generated PP keys (processTLSStreamFrame)
 
 %# ================ Stream 0 test ================
 %not-contains: stdout
