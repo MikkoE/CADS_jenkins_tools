@@ -67,5 +67,7 @@ testNetwork.**.vector-recording-intervals               = 0..360
 **.*.netPerfMeterApp[*].queueSize                       = 5e+05B
 
 %#--------------------------------------------------------------------------------------------------------------
-
+%# ================================ handshage message ==========================
+%contains: test.out
+[QUICConnection.cc][processPacketInClientInitSent:180] Received handshake packet
 %#--------------------------------------------------------------------------------------------------------------
