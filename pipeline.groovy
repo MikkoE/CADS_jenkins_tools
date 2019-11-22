@@ -74,16 +74,18 @@ pipeline {
               git branch: 'master',
                 credentialsId: 'fd377909-72a2-44f5-b89e-787344533514',
                 url: 'https://github.com/MikkoE/test-results.git'
-                sh 'ls -l'
+                //sh 'ls -l'
                 }
 
-              sh 'ls -l'
-              sh 'git commit -am "Succesfull Testrun"'
+              //starting script to build results
+              sh 'cd scripts/ && ./store_artifacts'
+              //sh 'ls -l'
+              //sh 'git commit -am "Succesfull Testrun"'
 
-              dir('artifacts'){
-                sshagent(['fd377909-72a2-44f5-b89e-787344533514']) {
-                  sh "git push origin master"
-                }
+              //dir('artifacts'){
+              //  sshagent(['fd377909-72a2-44f5-b89e-787344533514']) {
+              //    sh "git push origin master"
+              //  }
               }
             }
 
