@@ -74,9 +74,12 @@ pipeline {
               git branch: 'Master',
                 credentialsId: 'fd377909-72a2-44f5-b89e-787344533514',
                 url: 'https://github.com/MikkoE/test-results.git'
+                sh 'ls -l'
+                }
+
               sh 'ls -l'
             }
-            sh 'ls -l'
+
         }
     }
     post {
