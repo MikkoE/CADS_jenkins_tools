@@ -67,25 +67,16 @@ pipeline {
                         sh 'cd inet-private/tests/unit/ && ./runtest QuicHandshake.test'
 
                         //starting script to build results
-                        sh 'cd scripts/ && ls -l'
-                        sh 'cd scripts/ && chmod 777 store_artifacts.sh'
-                        sh 'cd scripts/ && ./store_artifacts.sh'
-                        sh 'cd artifacts/ && ls -l'
-                        sh 'cd artifacts/ && git commit -am "Succesfull Testrun"'
+                        //sh 'cd scripts/ && ls -l'
+                        //sh 'cd scripts/ && chmod 777 store_artifacts.sh'
+                        //sh 'cd scripts/ && ./store_artifacts.sh'
+                        //sh 'cd artifacts/ && ls -l'
+                        //sh 'cd artifacts/ && git commit -am "Succesfull Testrun"'
                     }
                 }
             }
         }
-        stage('publish testresults'){
-            steps{
-              dir('artifacts'){
-                sshagent(['fd377909-72a2-44f5-b89e-787344533514']) {
-                  sh "git push origin master"
-                }
-              }
-            }
 
-        }
     }
     post {
         success {
