@@ -71,7 +71,7 @@ pipeline {
             steps{
                 sh 'cd inet-private/tests/unit/work && ls -l'
                 sh 'zip -r work_quicHandshake.zip QuicHandshake'
-                sh 'archiveArtifacts artifacts: 'work_quicHandshake.zip', fingerprint: true'
+                //sh 'archiveArtifacts artifacts: 'work_quicHandshake.zip', fingerprint: true'
             }
         }
     }
