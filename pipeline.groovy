@@ -69,10 +69,14 @@ pipeline {
         }
         stage('testresults'){
             steps{
-                sh 'cd inet-private/tests/unit/work && ls -l'
-                sh 'zip -r work_quicHandshake.zip QuicHandshake'
-                //sh 'archiveArtifacts artifacts: 'work_quicHandshake.zip', fingerprint: true'
+              dir('artifacts'){
+              echo 'checkout artifact repo'
+              git branch: 'Master',
+                credentialsId: 'fd377909-72a2-44f5-b89e-787344533514',
+                url: 'https://github.com/MikkoE/test-results.git'
+              sh 'ls -l'
             }
+            sh 'ls -l'
         }
     }
     post {
