@@ -78,7 +78,7 @@ pipeline {
                 }
 
               //starting script to build results
-              sh 'ls -l'
+              sh 'cd scripts/ && ls -l'
               sh 'cd scripts/ && ./store_artifacts.sh'
 
               //sh 'git commit -am "Succesfull Testrun"'
