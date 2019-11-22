@@ -69,7 +69,7 @@ pipeline {
         }
         stage('testresults'){
             steps{
-                sh 'cd inet-private/tests/unit/ && ls -l'
+                sh 'cd inet-private/tests/unit/work && ls -l'
             }
         }
     }
