@@ -67,5 +67,19 @@ testNetwork.**.vector-recording-intervals               = 0..360
 **.*.netPerfMeterApp[*].queueSize                       = 5e+05B
 
 %#--------------------------------------------------------------------------------------------------------------
+%# ======================= starting handshake message ==========================
+%contains: test.out
+Transition: QUIC_S_PCB_INIT --> QUIC_S_CLIENT_INIT_SENT  (event was: QUIC_E_OPEN_ACTIVE)
+quic_basic: QUIC_S_PCB_INIT --> QUIC_S_CLIENT_INIT_SENT  (on QUIC_E_OPEN_ACTIVE)
+
+%# ===================== server received handshake message ==========================
+%contains: test.out
+[QUICConnection.cc][processPacketInClientInitSent:176] Enter
+[QUICConnection.cc][processPacketInClientInitSent:180] Received handshake packet
+
+%# ===================== client received handshake -> established ==========================
+%contains: test.out
+Transition: QUIC_S_CLIENT_INIT_SENT --> QUIC_S_ESTABLISHED  (event was: QUIC_E_RCV_HANDSHAKE)
+quic_basic: QUIC_S_CLIENT_INIT_SENT --> QUIC_S_ESTABLISHED  (on QUIC_E_RCV_HANDSHAKE)
 
 %#--------------------------------------------------------------------------------------------------------------
