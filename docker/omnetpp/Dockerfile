@@ -17,7 +17,7 @@ RUN useradd -m -d /home/jenkins -s $(which bash) -G sudo jenkins
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get -qq -y install build-essential gcc g++ bison \
     flex perl-base python python3 tcl-dev libxml2-dev libxml2-utils zlib1g-dev \
-    default-jre wget cmake python3
+    default-jre wget cmake python3 zip
 
 ################################################################################
 #  adding omnet to the path variable                                           #
