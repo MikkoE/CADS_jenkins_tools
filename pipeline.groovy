@@ -21,6 +21,12 @@ pipeline {
                     url: 'https://github.com/Transport-Protocol/inet-private.git'
                   sh 'git submodule update --init'
                 }
+                dir('artifacts'){
+                echo 'checkout artifact repo'
+                git branch: 'master',
+                  credentialsId: 'fd377909-72a2-44f5-b89e-787344533514',
+                  url: 'https://github.com/MikkoE/test-results.git'
+                }
             }
         }
         stage('docker-omnetpp'){
@@ -51,10 +57,6 @@ pipeline {
                         sh 'cd inet-private && make MODE=debug'
 
                         //running the tests
-                        //first a inet testcandidate to validate running tests
-                        //sh 'cd inet-private/tests/unit/ && ./runtest QUICPathChallengeResponse.test'
-                        //sh 'cd inet-private/tests/packetdrill/quic/ && ./runtest'
-
                         //override the ned file
                         sh 'cd inet-private/examples/quic/basic && rm simpleQuicSetup.ned'
                         sh 'cp quic-tests/simpleQuicSetup.ned inet-private/examples/quic/basic/'
@@ -63,33 +65,15 @@ pipeline {
                         sh 'cp quic-tests/QuicHandshake.test inet-private/tests/unit/'
                         sh 'cd inet-private/tests/unit/ && ls -l'
                         sh 'cd inet-private/tests/unit/ && ./runtest QuicHandshake.test'
+
+                        //starting script to build results
+                        sh 'cd scripts/ && ls -l'
+                        sh 'cd scripts/ && ./store_artifacts.sh'
+                        sh 'cd scripts/ && ls -l'
+                        sh 'git commit -am "Succesfull Testrun"'
                     }
                 }
             }
-        }
-        stage('gather testresults'){
-            steps{
-              dir('artifacts'){
-              echo 'checkout artifact repo'
-              git branch: 'master',
-                credentialsId: 'fd377909-72a2-44f5-b89e-787344533514',
-                url: 'https://github.com/MikkoE/test-results.git'
-                //sh 'ls -l'
-                }
-
-              //starting script to build results
-              sh 'cd scripts/ && ls -l'
-              sh 'cd scripts/ && ./store_artifacts.sh'
-
-              //sh 'git commit -am "Succesfull Testrun"'
-
-              //dir('artifacts'){
-              //  sshagent(['fd377909-72a2-44f5-b89e-787344533514']) {
-              //    sh "git push origin master"
-              //  }
-              //}
-            }
-
         }
     }
     post {
