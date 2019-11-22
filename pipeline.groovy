@@ -67,7 +67,7 @@ pipeline {
                 }
             }
         }
-        stage('testresults'){
+        stage('gather testresults'){
             steps{
               dir('artifacts'){
               echo 'checkout artifact repo'
@@ -78,6 +78,13 @@ pipeline {
                 }
 
               sh 'ls -l'
+              sh 'git commit -am "Succesfull Testrun"'
+
+              dir('artifacts'){
+                sshagent(['fd377909-72a2-44f5-b89e-787344533514']) {
+                  sh "git push origin master"
+                }
+              }
             }
 
         }
