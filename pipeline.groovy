@@ -70,7 +70,7 @@ pipeline {
                         sh 'cd scripts/ && ls -l'
                         sh 'cd scripts/ && ./store_artifacts.sh'
                         sh 'cd scripts/ && ls -l'
-                        sh 'git commit -am "Succesfull Testrun"'
+                        sh 'cd scripts/ && git commit -am "Succesfull Testrun"'
                     }
                 }
             }
