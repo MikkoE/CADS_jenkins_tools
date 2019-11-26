@@ -13,8 +13,6 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 //
 
-//package inet.examples.quic.basic;
-
 import inet.applications.netperfmeter.NetPerfMeterHost;
 import inet.networklayer.configurator.ipv4.FlatNetworkConfigurator;
 import inet.networklayer.configurator.ipv4.IPv4NetworkConfigurator;
