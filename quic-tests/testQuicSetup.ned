@@ -24,7 +24,7 @@ import ned.DatarateChannel;
 
 @license(LGPL);
 
-network QuickTest
+network QuicTest
 {
     //@display("bgb=797,414");
     types:

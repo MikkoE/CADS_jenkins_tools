@@ -6,11 +6,11 @@ Test handshake messages.
 %inifile: omnetpp.ini
 
 [General]
-network=QuickTest
+network=QuicTest
 cmdenv-event-banners=false
 cmdenv-express-mode = false
 tkenv-plugin-path = ../../../etc/plugins
-ned-path = ../../../../examples/quic/basic;../../../../src
+ned-path = ../../../../examples/quic/basic/testQuicSetup.ned;../../../../src
 
 ## Setup connection line
 simtime-resolution                                      = ms
