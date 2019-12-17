@@ -34,6 +34,8 @@ network QuicTest
         }
 
     submodules:
+        configurator: IPv4NetworkConfigurator {
+        }
         router1: Router {
             gates:
                 pppg[2];
