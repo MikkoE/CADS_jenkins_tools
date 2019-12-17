@@ -28,37 +28,37 @@ import ned.DatarateChannel;
 
 network QuickTest
 {
-    @display("bgb=797,414");
+    //@display("bgb=797,414");
     types:
         channel pppline extends DatarateChannel
         {
             delay = 0.01ms;
             datarate = 12Mbps;
-            per = 0;
-            ber = 0;
+            //per = 0;
+            //ber = 0;
         }
 
     submodules:
         router1: Router {
-            @display("p=273,199");
+            //@display("p=273,199");
             gates:
                 pppg[2];
         }
         router2: Router {
-            @display("p=503,199");
+            //@display("p=503,199");
             gates:
                 pppg[2];
         }
         configurator: IPv4NetworkConfigurator {
-            @display("p=37,31");
+            //@display("p=37,31");
         }
         host1: NetPerfMeterHost {
-            @display("p=37,199");
+            //@display("p=37,199");
             gates:
                 pppg[1];
         }
         host2: NetPerfMeterHost {
-            @display("p=737,199");
+            //@display("p=737,199");
             gates:
                 pppg[1];
         }
