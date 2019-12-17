@@ -1,6 +1,5 @@
 %description:
 Test handshake messages.
-Note: Comment out package in simpleQuicSetup.net!
 
 %#--------------------------------------------------------------------------------------------------------------
 
