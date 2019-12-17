@@ -10,7 +10,7 @@ network=QuicTest
 cmdenv-event-banners=false
 cmdenv-express-mode = false
 tkenv-plugin-path = ../../../etc/plugins
-ned-path = ../../../../examples/quic/basic/testQuicSetup.ned;../../../../src
+ned-path = ../../../../examples/quic/basic/;../../../../src
 
 ## Setup connection line
 simtime-resolution                                      = ms

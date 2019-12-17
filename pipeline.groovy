@@ -45,13 +45,14 @@ pipeline {
                         sh 'cd omnetpp && make -j$(grep -c proc /proc/cpuinfo)'
 
                         // installing inet
-                        sh 'cd inet-private && cat README.md'
-                        sh 'cd inet-private && cat INSTALL'
-                        sh 'cd inet-private && cat Makefile'
+                        //sh 'cd inet-private && cat README.md'
+                        //sh 'cd inet-private && cat INSTALL'
+                        //sh 'cd inet-private && cat Makefile'
                         sh 'cd inet-private && make makefiles'
                         sh 'cd inet-private && make MODE=debug'
 
                         //running the tests
+                        sh 'cd inet-private/examples/quic/basic/ && rm simpleQuicSetup.ned'
                         sh 'cp quic-tests/testQuicSetup.ned inet-private/examples/quic/basic/'
 
                         //trying to copy test for quic
