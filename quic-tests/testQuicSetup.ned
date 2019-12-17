@@ -30,7 +30,7 @@ network QuicTest
         channel drc extends DatarateChannel
         {
             delay = 0.01ms;
-            datarate = 12Mbps;
+            datarate = 100Mbps;
         }
 
     submodules:
